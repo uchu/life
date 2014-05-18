@@ -1,4 +1,0 @@
-life
-====
-
-Game of Life

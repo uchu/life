@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<title>Game of Life</title>
+		<link href="css/styles.css" rel="stylesheet">
+		<script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
+		<script src="http://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.6.0/underscore-min.js"></script>
+		<script src="js/life.js"></script>
+	</head>
+	<body>
+		<canvas id="life_canvas" width="600" height="600"></canvas>
+		<h1 class="main_title">Game of Life</h1>
+		<div class="controls">
+			<div id="life_run" class="button">Run</div>
+			<div id="life_stop" class="button">Stop</div>
+			<div id="life_clear" class="button">Clear</div>
+			
+		</div>
+		<div class="controls">
+			<input type="text" id="preset_name" placeholder="Preset name" value="" />
+			<div id="life_save" class="button">Save</div>
+			<br />
+			<select id="life_presets">
+			</select>
+			<div id="delete_preset" class="button">Delete</div>
+		</div>
+		<p><sup>*</sup>Hold down SHIFT to erase cells.</p>
+	</body>
+</html>
