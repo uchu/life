@@ -73,7 +73,6 @@ $( function () {
 				.on('change', _.bind( function () {
 					this.loadPreset( this.$presets.val() );
 				}, this ) );
-
 			
 			if ( this.supportsLS && localStorage.getItem('life') &&  localStorage.getItem('life') != '{}' ) {
 				this.presets = JSON.parse( localStorage.getItem('life') );
@@ -136,8 +135,6 @@ $( function () {
 					x = parseInt( xy[0] ),
 					y = parseInt( xy[1] ),
 					neighbours = countNeighbours( x, y);
-					
-
 				
 				if ( neighbours == 1 || neighbours == 2 ) {
 					for ( var ix = -1 ; ix < 2; ix ++ ) {
@@ -183,7 +180,6 @@ $( function () {
 				xy = x + ':' + y,
 				i = _.indexOf( this.space, xy );
 				
-			
 			if ( e.shiftKey ) {
 				this.space.splice( i, 1 );
 				this.ctx.fillStyle = this.emptyColor;
