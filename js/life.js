@@ -199,6 +199,7 @@ $( function () {
 			this.$presets.append( $option );
 			this.presets[ this.$presetName.val() ] = this.space.join()
 			this.supportsLS && localStorage.setItem( 'life', JSON.stringify( this.presets ) );
+			$option.attr('selected', 'selected');
 			this.$presetName.val('');
 		},
 		loadPreset: function ( n ) {
