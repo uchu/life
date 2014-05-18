@@ -30,10 +30,7 @@ $( function () {
 			this.playing = false;
 			
 			this.$canvas
-				.on('mousemove click', _.bind( this.cellClicked, this ) )
-				[0].onselectstart = function () {
-					 return false;
-				};
+				.on('mousemove click', _.bind( this.cellClicked, this ) );
 				
 			$( document )
 				.on('mousedown', _.bind( function () {
