@@ -27,6 +27,10 @@ body {
 	cursor: pointer;
 }
 
+.button.active {
+	background: linear-gradient(#fbefef 0%, #f3d1f3 100%);
+}
+
 .controls {
 	margin-bottom: 30px;
 }

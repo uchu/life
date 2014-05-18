@@ -48,6 +48,7 @@ $( function () {
 					this.stop();
 					this.playing = true;
 					this.timer = setInterval( _.bind( this.tick, this ), this.interval );
+					this.$run.addClass('active');
 				}, this ) );
 				
 			this.$stop
@@ -69,6 +70,13 @@ $( function () {
 			this.$presets
 				.on('change', _.bind( function () {
 					this.loadPreset( this.$presets.val() );
+				}, this ) );
+			
+			this.$presetName
+				.on('keydown', _.bind( function ( e ) {
+					if ( e.keyCode == 13 ) {
+						this.savePreset();
+					}
 				}, this ) );
 			
 			if ( this.supportsLS && localStorage.getItem('life') &&  localStorage.getItem('life') != '{}' ) {
@@ -219,6 +227,7 @@ $( function () {
 		stop: function () {
 			this.playing = false;
 			clearInterval( this.timer );
+			this.$run.removeClass('active');
 		},
 		supportsLS: ( function () {
 			try {
