@@ -23,12 +23,13 @@ $( function () {
 			this.$presetName = $('#preset_name'); 
 			this.$presets = $('#life_presets');
 			this.presets = {
-				Default: '49:40,49:39,49:38,50:38,51:39,49:49,49:50,49:51,48:51,47:50,55:45,56:45,57:45,42:45,41:45,40:45,57:46,56:47,40:44,41:43'
+				Default: '49:40,49:39,49:38,50:38,51:39,49:49,49:50,49:51,48:51,47:50,55:45,56:45,57:45,42:45,41:45,40:45,57:46,56:47,40:44,41:43',
+				Gun: '34:29,34:30,35:30,35:29,44:29,44:30,44:31,45:28,46:27,47:27,49:28,50:29,50:30,50:31,51:30,48:30,49:32,47:33,46:33,45:32,54:29,55:29,54:28,54:27,55:27,55:28,56:26,56:30,58:26,58:25,58:30,58:31,68:27,68:28,69:27,69:28'
 			};
 			this.emptyColor = '#F5F5FF';
 			this.liveColor = '#FFCC99';
 			this.playing = false;
-			
+
 			this.$canvas
 				.on('mousemove click', _.bind( this.cellClicked, this ) );
 				
@@ -79,8 +80,8 @@ $( function () {
 					}
 				}, this ) );
 			
-			if ( this.supportsLS && localStorage.getItem('life') &&  localStorage.getItem('life') != '{}' ) {
-				this.presets = JSON.parse( localStorage.getItem('life') );
+			if ( this.supportsLS && localStorage.getItem('gol') &&  localStorage.getItem('gol') != '{}' ) {
+				this.presets = JSON.parse( localStorage.getItem('gol') );
 			}
 			
 			_.each ( this.presets, _.bind( function ( value, n, i ) {
@@ -141,7 +142,7 @@ $( function () {
 					y = parseInt( xy[1] ),
 					neighbours = countNeighbours( x, y);
 				
-				if ( neighbours == 1 || neighbours == 2 ) {
+				if ( neighbours > 0 ) {
 					for ( var ix = -1 ; ix < 2; ix ++ ) {
 						for ( var iy = -1 ; iy < 2; iy ++ ) {
 							if ( ix != 0 || iy != 0 ) {
@@ -206,7 +207,7 @@ $( function () {
 				
 			this.$presets.append( $option );
 			this.presets[ this.$presetName.val() ] = this.space.join()
-			this.supportsLS && localStorage.setItem( 'life', JSON.stringify( this.presets ) );
+			this.supportsLS && localStorage.setItem( 'gol', JSON.stringify( this.presets ) );
 			$option.attr('selected', 'selected');
 			this.$presetName.val('');
 		},
@@ -219,7 +220,7 @@ $( function () {
 			this.stop();
 			var $preset = this.$presets.find('option:selected');
 			delete this.presets[ $preset.val() ];
-			this.supportsLS && localStorage.setItem( 'life', JSON.stringify ( this.presets ) );
+			this.supportsLS && localStorage.setItem( 'gol', JSON.stringify ( this.presets ) );
 			$preset.remove();
 			this.space = [];
 			this.draw();
